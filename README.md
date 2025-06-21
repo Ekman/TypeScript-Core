@@ -2,7 +2,8 @@
 
 [![Build Status](https://circleci.com/gh/Ekman/TypeScript-Core.svg?style=svg)](https://app.circleci.com/pipelines/github/Ekman/TypeScript-Core)
 
-Code that I find myself rewriting over and over. May as well import it from a lib instead.
+Code that I find myself rewriting over and over. May as well import it from a
+lib instead.
 
 ## Installation
 

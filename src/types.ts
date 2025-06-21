@@ -1,4 +1,14 @@
 /**
+ * No-operation type.
+ */
+export type Noop = () => void;
+
+/**
+ * No-operation function.
+ */
+export const noop: Noop = () => {};
+
+/**
  * Normalize a possible null value to undefined.
  * @param value
  */

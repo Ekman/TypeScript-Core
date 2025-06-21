@@ -49,7 +49,9 @@
     "email": "niklas@niklasekman.solutions"
   },
   "keywords": [
-    "AsyncIterable"
+    "core",
+    "utility",
+    "multi-lib"
   ],
   "sideEffects": false,
   "dependencies": {
