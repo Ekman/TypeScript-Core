@@ -1,4 +1,4 @@
-# Asynkit
+# TypeScript Core
 
 [![Build Status](https://circleci.com/gh/Ekman/TypeScript-Core.svg?style=svg)](https://app.circleci.com/pipelines/github/Ekman/TypeScript-Core)
 
