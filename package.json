@@ -1,0 +1,58 @@
+{
+  "name": "@nekm/core",
+  "version": "1.0.0",
+  "description": "Code I find myself re-writing over-and-over.",
+  "license": "MIT",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "import": "./dist/index.esm.js",
+    "types": "./dist/index.d.ts",
+    "default": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
+  "unpkg": "./dist/index.umd.js",
+  "scripts": {
+    "build": "microbundle --format cjs,esm,umd",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.10",
+    "@types/jest": "^30.0.0",
+    "@types/querystringify": "^2.0.2",
+    "jest": "^30.0.0",
+    "jest-junit": "^16.0.0",
+    "microbundle": "^0.15.1",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  },
+  "maintainers": [
+    {
+      "email": "niklas@niklasekman.solutions",
+      "name": "Niklas Ekman",
+      "url": "https://www.niklasekman.solutions"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ekman/TypeScript-Core.git"
+  },
+  "homepage": "https://github.com/Ekman/TypeScript-Core#readme",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "author": {
+    "name": "Niklas Ekman",
+    "email": "niklas@niklasekman.solutions"
+  },
+  "keywords": [
+    "AsyncIterable"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "querystringify": "^2.2.0"
+  }
+}
