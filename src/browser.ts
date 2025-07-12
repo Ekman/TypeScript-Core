@@ -11,7 +11,11 @@ export function browserAssert(): void {
   }
 }
 
-export function browserImportScript(src: string): Promise<void> {
+export interface BrowserImportScriptProps {
+	readonly attributes: Record<string, string>;
+}
+
+export function browserImportScript(src: string, props?: BrowserImportScriptProps): Promise<void> {
   browserAssert();
 
   return new Promise((resolve) => {
@@ -20,6 +24,13 @@ export function browserImportScript(src: string): Promise<void> {
     script.type = "text/javascript";
     script.defer = true;
     script.onload = () => resolve();
+
+		if (props?.attributes) {
+			for (const [key, value] of Object.entries(props.attributes)) {
+				script.setAttribute(key, value);
+			}
+		}
+
     document.head.appendChild(script);
   });
 }
