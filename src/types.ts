@@ -1,3 +1,7 @@
+import { CoreError } from "./errors";
+
+export type NullOrUndefined = undefined | null;
+
 /**
  * No-operation type.
  */
@@ -12,7 +16,7 @@ export const noop: Noop = () => {};
  * Normalize a possible null value to undefined.
  * @param value
  */
-export function nullToUndefined<T>(value: T | undefined | null): T | undefined {
+export function nullToUndefined<T>(value: T | NullOrUndefined): T | undefined {
   return value === null ? undefined : value;
 }
 
@@ -27,4 +31,18 @@ export function strCompare(a: string, b: string): number {
   }
 
   return a > b ? 1 : -1;
+}
+
+export class TypingError extends CoreError {}
+
+/**
+ * If a value is undefined or null, throw.
+ * @param value
+ */
+export function throwIfUndefined<T>(
+  value: T | NullOrUndefined,
+): asserts value is T {
+  if (typeof value === "undefined" || value === null) {
+    throw new TypingError("Value is not allowed to be undefined or null.");
+  }
 }
