@@ -1,4 +1,4 @@
-import { strTrim, strTrimEnd, strTrimStart } from "./string";
+import {strCapitalize, strTrim, strTrimEnd, strTrimStart} from "./string";
 
 describe("string", () => {
   it("should be able to trim end", () => {
@@ -36,4 +36,17 @@ describe("string", () => {
       expect(strTrim(value, trim)).toEqual(expected);
     }
   });
+
+	it("should be able to capitalize a string", () => {
+		const data = [
+			["foo", "Foo"],
+			["Foo", "Foo"],
+			["", ""],
+			["bArA", "BArA"],
+		];
+
+		for (const [a, expected] of data) {
+			expect(strCapitalize(a as string)).toEqual(expected);
+		}
+	});
 });
