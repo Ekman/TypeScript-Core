@@ -6,9 +6,11 @@ describe("string", () => {
       ["fooo ", " ", "fooo"],
       ["foo/", "/", "foo"],
       ["foo", " ", "foo"],
+      [undefined, undefined],
     ];
 
     for (const [value, trim, expected] of data) {
+      // @ts-expect-error Typing magic
       expect(strTrimEnd(value, trim)).toEqual(expected);
     }
   });
@@ -18,9 +20,11 @@ describe("string", () => {
       [" fooo ", " ", "fooo "],
       ["/foo", "/", "foo"],
       ["foo", " ", "foo"],
+      [undefined, undefined],
     ];
 
     for (const [value, trim, expected] of data) {
+      // @ts-expect-error Typing magic
       expect(strTrimStart(value, trim)).toEqual(expected);
     }
   });
@@ -30,9 +34,11 @@ describe("string", () => {
       [" fooo ", " ", "fooo"],
       ["/foo", "/", "foo"],
       ["foo", " ", "foo"],
+      [undefined, undefined],
     ];
 
     for (const [value, trim, expected] of data) {
+      // @ts-expect-error Typing magic
       expect(strTrim(value, trim)).toEqual(expected);
     }
   });
@@ -43,6 +49,7 @@ describe("string", () => {
       ["Foo", "Foo"],
       ["", ""],
       ["bArA", "BArA"],
+      [undefined, undefined],
     ];
 
     for (const [a, expected] of data) {
