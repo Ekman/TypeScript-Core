@@ -16,6 +16,8 @@ export const noop: Noop = () => {};
  * Normalize a possible null value to undefined.
  * @param value
  */
+export function nullToUndefined<T>(value: T): T;
+export function nullToUndefined<T>(value: NullOrUndefined): undefined;
 export function nullToUndefined<T>(value: T | NullOrUndefined): T | undefined {
   return value === null ? undefined : value;
 }
