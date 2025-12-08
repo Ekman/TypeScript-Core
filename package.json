@@ -55,6 +55,7 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "querystringify": "^2.2.0"
+    "empty-php": "3.*",
+    "querystringify": "2.*"
   }
 }
