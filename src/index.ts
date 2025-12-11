@@ -5,3 +5,4 @@ export * from "./string";
 export * from "./array";
 export * from "./time";
 export * from "./object";
+export * from "./debug";
