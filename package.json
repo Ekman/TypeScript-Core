@@ -17,17 +17,6 @@
     "build": "microbundle --format cjs,esm,umd",
     "test": "jest"
   },
-  "devDependencies": {
-    "@tsconfig/recommended": "^1.0.10",
-    "@types/jest": "^30.0.0",
-    "@types/querystringify": "^2.0.2",
-    "jest": "^30.0.0",
-    "jest-junit": "^16.0.0",
-    "microbundle": "^0.15.1",
-    "ts-jest": "^29.4.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.5.3"
-  },
   "maintainers": [
     {
       "email": "niklas@niklasekman.solutions",
@@ -42,7 +31,8 @@
   "homepage": "https://github.com/Ekman/TypeScript-Core#readme",
   "files": [
     "dist",
-    "src"
+    "src",
+		"bin"
   ],
   "author": {
     "name": "Niklas Ekman",
@@ -54,8 +44,26 @@
     "multi-lib"
   ],
   "sideEffects": false,
+	"devDependencies": {
+		"@tsconfig/recommended": "^1.0.10",
+		"@types/jest": "^30.0.0",
+		"@types/querystringify": "^2.0.2",
+		"jest": "^30.0.0",
+		"jest-junit": "^16.0.0",
+		"microbundle": "^0.15.1",
+		"mongodb": "^7",
+		"ts-jest": "^29.4.0",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.5.3"
+	},
   "dependencies": {
-    "empty-php": "3.*",
-    "querystringify": "2.*"
-  }
+    "empty-php": "^3",
+    "querystringify": "^2"
+  },
+  "peerDependencies": {
+    "mongodb": "^7"
+  },
+	"bin": {
+		"mongodb-create-indices": "./bin/mongodb-sync-indices.js"
+	}
 }
