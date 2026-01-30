@@ -90,16 +90,17 @@ function createSearchIndices(collection, definitions) {
 
 (async () => {
 	if (!indicesPath) {
-		console.error("Usage: mongodb-create-indices <indices-path> [uri] [dbName]");
+		console.error("Usage: mongodb-create-indices <indices-path> [uri]");
 		process.exit(1);
 	}
-
-	const indicesContent = await readFile(indicesPath, "utf-8");
-	const indices = JSON.parse(indicesContent);
+	const indices = JSON.parse(
+		await readFile(indicesPath, "utf-8"),
+	);
 
 	console.log("Lets create some indices.", { uri });
 
 	const client = new MongoClient(uri);
+
 	await client.connect();
 
 	try {
