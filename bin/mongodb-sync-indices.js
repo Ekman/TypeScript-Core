@@ -93,6 +93,7 @@ function createSearchIndices(collection, definitions) {
 		console.error("Usage: mongodb-create-indices <indices-path> [uri]");
 		process.exit(1);
 	}
+	
 	const indices = JSON.parse(
 		await readFile(indicesPath, "utf-8"),
 	);
@@ -113,26 +114,24 @@ function createSearchIndices(collection, definitions) {
 				.toArray()
 		);
 
-		await Promise.allSettled(
-			Object.entries(indices)
-				.map(async ([collectionName, definitions]) => {
-					if (!collections.has(collectionName)) {
-						console.log("Creating collection.", { collectionName });
-						await db.createCollection(collectionName);
-					}
+		for (const [collectionName, definitions] of Object.entries(indices)) {
+			if (!collections.has(collectionName)) {
+				console.log("Creating collection.", { collectionName });
+				await db.createCollection(collectionName);
+			}
 
-					const collection = db.collection(collectionName);
-					console.log("Switching collection.", { collectionName });
+			const collection = db.collection(collectionName);
+			console.log("Switching collection.", { collectionName });
 
-					const desiredSpec = createDesiredSpec(definitions.indices);
+			const desiredSpec = createDesiredSpec(definitions.indices);
 
-					await Promise.allSettled([
-						deleteIndices(collection, desiredSpec),
-						createIndices(collection, definitions.indices),
-						createSearchIndices(collection, definitions.searchIndices),
-					]);
-				}),
-		)
+			await deleteIndices(collection, desiredSpec);
+			await createIndices(collection, definitions.indices);
+
+			if (definitions.searchIndices && definitions.searchIndices.length > 0) {
+				await createSearchIndices(collection, definitions.searchIndices);
+			}
+		}
 
 		console.log("Done");
 	} finally {
