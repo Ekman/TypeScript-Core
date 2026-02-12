@@ -3,7 +3,5 @@
  * @param value
  */
 export function dd(value: unknown): void {
-	console.debug(
-		JSON.stringify(value, undefined, 2),
-	);
+	console.debug(JSON.stringify(value, undefined, 2));
 }
