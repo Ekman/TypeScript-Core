@@ -1,4 +1,3 @@
-import { queryParamsCreate } from "./query-params";
 import {objectRemoveEmpty} from "./object";
 
 describe("object", () => {
