@@ -17,7 +17,7 @@ export const noop: Noop = () => {};
  * @param value
  */
 export function nullToUndefined<T>(value: T | NullOrUndefined): T | undefined {
-  return value === null ? undefined : value;
+	return value === null ? undefined : value;
 }
 
 /**
@@ -26,11 +26,11 @@ export function nullToUndefined<T>(value: T | NullOrUndefined): T | undefined {
  * @param b
  */
 export function strCompare(a: string, b: string): number {
-  if (a === b) {
-    return 0;
-  }
+	if (a === b) {
+		return 0;
+	}
 
-  return a > b ? 1 : -1;
+	return a > b ? 1 : -1;
 }
 
 export class TypingError extends CoreError {}
@@ -40,9 +40,9 @@ export class TypingError extends CoreError {}
  * @param value
  */
 export function throwIfUndefined<T>(
-  value: T | NullOrUndefined,
+	value: T | NullOrUndefined,
 ): asserts value is T {
-  if (typeof value === "undefined" || value === null) {
-    throw new TypingError("Value is not allowed to be undefined or null.");
-  }
+	if (typeof value === "undefined" || value === null) {
+		throw new TypingError("Value is not allowed to be undefined or null.");
+	}
 }
