@@ -4,7 +4,8 @@ import {MongoClient, MongoServerError} from "mongodb";
 import { readFile } from "node:fs/promises";
 
 const indicesPath = process.argv[2];
-const uri = process.argv[3] ??
+const dbName = process.argv[3];
+const uri = process.argv[4] ??
 	"mongodb://localhost:27017/admin?directConnection=true";
 
 function serializeIndex({ key, unique }) {
@@ -105,7 +106,7 @@ function createSearchIndices(collection, definitions) {
 	await client.connect();
 
 	try {
-		const db = client.db();
+		const db = client.db(dbName);
 
 		const collections = new Set(
 			await db
