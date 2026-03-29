@@ -1,72 +1,71 @@
 {
-  "name": "@nekm/core",
-  "version": "1.0.0",
-  "description": "Code I find myself re-writing over-and-over.",
-  "license": "MIT",
-  "source": "./src/index.ts",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    "import": "./dist/index.esm.js",
-    "types": "./dist/index.d.ts",
-    "default": "./dist/index.js"
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/index.esm.js",
-  "unpkg": "./dist/index.umd.js",
-  "scripts": {
-    "build": "microbundle --format cjs,esm,umd",
-    "test": "vitest run"
-  },
-  "maintainers": [
-    {
-      "email": "niklas@niklasekman.solutions",
-      "name": "Niklas Ekman",
-      "url": "https://www.niklasekman.solutions"
-    }
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ekman/TypeScript-Core.git"
-  },
-  "homepage": "https://github.com/Ekman/TypeScript-Core#readme",
-  "files": [
-    "dist",
-    "src",
-    "bin"
-  ],
-  "author": {
-    "name": "Niklas Ekman",
-    "email": "niklas@niklasekman.solutions"
-  },
-  "keywords": [
-    "core",
-    "utility",
-    "multi-lib"
-  ],
-  "sideEffects": false,
-  "devDependencies": {
-    "@eslint/js": "^9",
-    "@tsconfig/recommended": "^1.0.10",
-    "@types/querystringify": "^2.0.2",
-    "@typescript-eslint/eslint-plugin": "^8.55.0",
-    "@typescript-eslint/parser": "^8.55.0",
-    "eslint": "^9",
-    "globals": "^17.3.0",
-    "microbundle": "^0.15.1",
-    "mongodb": "^7",
-    "prettier": "^3.8.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.5.3",
-    "vitest": "^4.1.2"
-  },
-  "dependencies": {
-    "empty-php": "^3",
-    "querystringify": "^2"
-  },
-  "peerDependencies": {
-    "mongodb": "^7"
-  },
-  "bin": {
-    "mongodb-create-indices": "./bin/mongodb-sync-indices.js"
-  }
+	"name": "@nekm/core",
+	"version": "1.0.0",
+	"description": "Code I find myself re-writing over-and-over.",
+	"license": "MIT",
+	"source": "./src/index.ts",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		"import": "./dist/index.esm.js",
+		"types": "./dist/index.d.ts",
+		"default": "./dist/index.js"
+	},
+	"main": "./dist/index.js",
+	"module": "./dist/index.esm.js",
+	"scripts": {
+		"build": "tsup src/index.ts --format cjs,esm --dts",
+		"test": "vitest run",
+		"format": "prettier --write --cache src && eslint --fix --max-warnings=0 --cache src"
+	},
+	"maintainers": [
+		{
+			"email": "niklas@niklasekman.solutions",
+			"name": "Niklas Ekman",
+			"url": "https://www.niklasekman.solutions"
+		}
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Ekman/TypeScript-Core.git"
+	},
+	"homepage": "https://github.com/Ekman/TypeScript-Core#readme",
+	"files": [
+		"dist",
+		"src",
+		"bin"
+	],
+	"author": {
+		"name": "Niklas Ekman",
+		"email": "niklas@niklasekman.solutions"
+	},
+	"keywords": [
+		"core",
+		"utility",
+		"multi-lib"
+	],
+	"sideEffects": false,
+	"devDependencies": {
+		"@eslint/js": "^10",
+		"@types/querystringify": "^2.0.2",
+		"@typescript-eslint/eslint-plugin": "^8.57.2",
+		"@typescript-eslint/parser": "^8.57.2",
+		"eslint": "^10",
+		"globals": "^17.4.0",
+		"mongodb": "^7",
+		"prettier": "^3.8.1",
+		"ts-node": "^10.9.2",
+		"tsup": "^8.5.1",
+		"typescript": "^5",
+		"vitest": "^3"
+	},
+	"dependencies": {
+		"empty-php": "^3",
+		"querystringify": "^2"
+	},
+	"peerDependencies": {
+		"mongodb": "^7"
+	},
+	"bin": {
+		"mongodb-create-indices": "./bin/mongodb-sync-indices.js"
+	}
 }

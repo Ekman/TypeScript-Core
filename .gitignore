@@ -13,3 +13,4 @@ yarn-error.log*
 dist
 tsconfig.tsbuildinfo
 junit.xml
+.eslintcache
