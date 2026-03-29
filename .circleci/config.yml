@@ -2,10 +2,16 @@ version: 2.1
 orbs:
   node: circleci/node@7
 jobs:
-  deploy:
+  unit_test:
     executor: &executor
       name: node/default
       resource_class: small
+    steps:
+      - checkout
+      - node/install-packages
+      - run: npm test
+  deploy:
+    executor: *executor
     steps:
       - checkout
       - node/install-packages
@@ -40,23 +46,17 @@ workflows:
           filters: &ignore-main
             branches:
               ignore: main
-      - node/test:
-          name: unit_test
-          test-results-for: jest
-          executor: *executor
+      - unit_test:
           filters: *ignore-main
   deploy:
     jobs:
-      - node/test:
-          name: &unit_test unit_test
-          test-results-for: jest
-          executor: *executor
+      - unit_test:
           filters: &deploy_filters
             tags:
               only: /^\d+\.\d+\.\d+$/
             branches:
               ignore: /.*/
       - deploy:
-          requires: [*unit_test]
+          requires: [unit_test]
           context: [npm]
           filters: *deploy_filters
