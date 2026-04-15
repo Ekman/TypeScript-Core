@@ -7,3 +7,4 @@ export * from "./time";
 export * from "./object";
 export * from "./debug";
 export * from "./url";
+export * from "./enum";
