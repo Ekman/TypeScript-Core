@@ -77,7 +77,7 @@ function createSearchIndices(collection, definitions) {
 					) {
 						await collection.createSearchIndex({ 
 							name,
-							type: "mappings" in definition ? "search" : "vector",
+							type: "mappings" in definition ? "search" : "vectorSearch",
 							definition,
 						});
 					} else {
