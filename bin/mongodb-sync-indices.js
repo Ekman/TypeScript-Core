@@ -75,7 +75,11 @@ function createSearchIndices(collection, definitions) {
 					if (
 						error instanceof MongoServerError && error.codeName === "IndexNotFound"
 					) {
-						await collection.createSearchIndex({ name, definition });
+						await collection.createSearchIndex({ 
+							name,
+							type: "mappings" in definition ? "search" : "vector",
+							definition,
+						});
 					} else {
 						throw error;
 					}
