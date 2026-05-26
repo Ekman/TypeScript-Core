@@ -129,7 +129,7 @@ function createSearchIndices(collection, definitions) {
 			await deleteIndices(collection, desiredSpec);
 			await createIndices(collection, definitions.indices);
 
-			if (definitions.searchIndices && definitions.searchIndices.length > 0) {
+			if (definitions.searchIndices && Object.keys(definitions.searchIndices).length > 0) {
 				await createSearchIndices(collection, definitions.searchIndices);
 			}
 		}
