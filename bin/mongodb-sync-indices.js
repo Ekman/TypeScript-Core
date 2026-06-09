@@ -69,17 +69,16 @@ function createSearchIndices(collection, definitions) {
 	return Promise.all(
 		Object.entries(definitions)
 			.map(async  ([ name, definition ]) => {
+				const type = "mappings" in definition ? "search" : "vectorSearch";
 				try {
 					await collection.updateSearchIndex(name, definition);
 				} catch (error) {
 					if (
-						error instanceof MongoServerError && error.codeName === "IndexNotFound"
+						error instanceof MongoServerError &&
+						(error.codeName === "IndexNotFound" ||
+							(type === "vectorSearch" && error.codeName === "BadValue"))
 					) {
-						await collection.createSearchIndex({ 
-							name,
-							type: "mappings" in definition ? "search" : "vectorSearch",
-							definition,
-						});
+						await collection.createSearchIndex({ name, type, definition });
 					} else {
 						throw error;
 					}
